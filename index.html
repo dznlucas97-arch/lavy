@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cartinha para a Lavyla</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1722;
+      --card:#0b1220cc;
+      --accent:#ff6b81;
+      --muted:#c7d2da;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:
+        linear-gradient(rgba(15,23,34,0.8), rgba(15,23,34,0.8)),
+        url("https://s11.aconvert.com/convert/p3r68-cdx67/bhuer-rrper.jpg") no-repeat center/cover;
+      color:var(--muted);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+    }
+    .wrapper{
+      width:100%;
+      max-width:820px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border-radius:18px;
+      box-shadow:0 10px 30px rgba(2,6,23,0.6);
+      padding:28px;
+      position:relative;
+      overflow:hidden;
+    }
+    header{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-bottom:18px;
+    }
+    .heart{
+      width:56px;height:56px;border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),#ffb3c0);
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 6px 18px rgba(255,107,129,0.18);
+      transform:rotate(-10deg);
+    }
+    .heart svg{filter:drop-shadow(0 6px 16px rgba(255,107,129,0.18))}
+    h1{font-size:20px;margin:0;color:white;font-weight:600}
+    p.lead{margin:0;color:var(--muted);opacity:0.95}
+    .card{
+      margin-top:14px;
+      background:var(--card);
+      border-radius:14px;
+      padding:22px;
+      min-height:180px;
+      position:relative;
+      overflow:hidden;
+    }
+    .letter{
+      font-size:18px;
+      line-height:1.6;
+      color:#f8f5f7;
+      white-space:pre-wrap;
+      max-height:420px;
+      overflow:auto;
+      padding-right:6px;
+    }
+    .controls{
+      display:flex;
+      gap:10px;
+      margin-top:16px;
+      justify-content:flex-end;
+    }
+    button{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.08);
+      padding:10px 14px;
+      border-radius:10px;
+      color:var(--muted);
+      cursor:pointer;
+      font-weight:600;
+    }
+    button.primary{
+      background:linear-gradient(90deg,var(--accent),#ff8aa6);
+      color:white;border:0;
+      box-shadow:0 8px 20px rgba(255,107,129,0.18);
+    }
+    .small{
+      font-size:13px;padding:8px 10px;border-radius:8px;
+    }
+
+    /* typing caret */
+    .typing {
+      border-right: 2px solid rgba(255,255,255,0.7);
+      animation: blink 1s steps(1) infinite;
+    }
+    @keyframes blink {50%{border-color:transparent}}
+
+    /* responsive */
+    @media (max-width:520px){
+      .heart{width:46px;height:46px}
+      .letter{font-size:16px}
+      header{gap:10px}
+    }
+
+    /* confetti */
+    .confetti {
+      pointer-events:none;
+      position:absolute;
+      inset:0;
+      z-index:40;
+    }
+    .confetti i{
+      position:absolute;
+      width:8px;height:10px;
+      opacity:0;
+      transform:translateY(-10px) rotate(10deg);
+      animation:confetti-fly 1.2s ease-out forwards;
+    }
+    @keyframes confetti-fly{
+      0%{opacity:1;transform:translateY(0) rotate(0) scale(1)}
+      100%{opacity:0;transform:translateY(220px) rotate(540deg) scale(.8)}
+    }
+
+    footer{margin-top:14px;text-align:center;color:rgba(255,255,255,0.45);font-size:13px}
+    textarea.hidden{
+      position:fixed;left:-9999px;opacity:0;height:1px;width:1px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Música de fundo (muted por padrão) -->
+  <audio id="bgMusic" autoplay loop muted>
+    <source src="https://s17.aconvert.com/convert/p3r68-cdx67/50oi7-5u1lp.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="wrapper" id="wrapper">
+    <header>
+      <div class="heart" aria-hidden>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path d="M12 21s-8.5-5.9-10.3-9.1C-0.6 6.6 4.6 2 8.6 5.1 10.7 6.9 12 8 12 8s1.3-1.1 3.4-2.9C19.4 2 24.6 6.6 22.3 11.9 20.5 15.1 12 21 12 21z" fill="white" fill-opacity="0.95"/>
+        </svg>
+      </div>
+      <div>
+        <h1>Uma cartinha especial</h1>
+        <p class="lead">Abra quando quiser lavyzinha🤍</p>
+      </div>
+    </header>
+
+    <div class="card" role="region" aria-label="Carta">
+      <div class="letter" id="letter"></div>
+      <div class="confetti" id="confetti" aria-hidden></div>
+    </div>
+
+    <div class="controls">
+      <button class="small" id="btnToggle">Abrir carta</button>
+      <button class="small" id="btnCopy">Copiar texto</button>
+      <button class="small primary" id="btnPrint">Imprimir / Salvar PDF</button>
+    </div>
+
+    <footer>Feito com carinho por Lucas para Lavyla💌 </footer>
+    <textarea class="hidden" id="hiddenCopy"></textarea>
+  </div>
+
+  <script>
+    const carta = `OIII AMORRRZÃOOOOOOO, Enfimmmm esse é outro texto
+
+Desde o primeiro sorriso seu, minhas manhãs ficaram mais leves. Você é o meu melhor motivo de calma e a minha maior aventura. 
+
+Tudo em vc me traz paz e felicidade e meu sonho é sempre viver ao seu lado e te fzr feliz e nunca te abandonar nem nada.
+
+Sabe que eu te amo muito, muito muito e muitooooooo, eu quero ver vc sempre sorridente tá? com seu sorriso maravilhoso e brilhante como as estrelas do universo.
+
+EU TE AMO`;
+
+    const letterEl = document.getElementById('letter');
+    const btnToggle = document.getElementById('btnToggle');
+    const btnCopy = document.getElementById('btnCopy');
+    const btnPrint = document.getElementById('btnPrint');
+    const hiddenCopy = document.getElementById('hiddenCopy');
+    const confettiContainer = document.getElementById('confetti');
+    const bgMusic = document.getElementById('bgMusic');
+
+    let opened = false;
+    let typingTimer;
+
+    function typeText(text, speed = 24) {
+      clearInterval(typingTimer);
+      letterEl.textContent = '';
+      let i = 0;
+      letterEl.classList.add('typing');
+      typingTimer = setInterval(() => {
+        if (i >= text.length) {
+          clearInterval(typingTimer);
+          letterEl.classList.remove('typing');
+          return;
+        }
+        letterEl.textContent += text[i++];
+        letterEl.scrollTop = letterEl.scrollHeight;
+      }, speed);
+    }
+
+    function showConfetti(){
+      confettiContainer.innerHTML = '';
+      const colors = ['#ff6b81','#ffc1c8','#ffd6e0','#ffb3c0','#ffd166'];
+      for(let i=0;i<18;i++){
+        const el = document.createElement('i');
+        el.style.left = (6 + Math.random()*88) + '%';
+        el.style.top = (-10 - Math.random()*20) + 'px';
+        el.style.background = colors[i % colors.length];
+        el.style.width = Math.floor(6 + Math.random()*8) + 'px';
+        el.style.height = Math.floor(8 + Math.random()*10) + 'px';
+        el.style.transform = `translateY(0) rotate(${Math.random()*90}deg)`;
+        el.style.animationDelay = (Math.random()*0.12) + 's';
+        confettiContainer.appendChild(el);
+      }
+      setTimeout(()=>confettiContainer.innerHTML='',1400);
+    }
+
+    btnToggle.addEventListener('click', ()=>{
+      if(!opened){
+        bgMusic.muted = false; // libera o som ao abrir
+        bgMusic.play();
+        btnToggle.textContent = 'Fechar carta';
+        typeText(carta, 18);
+        showConfetti();
+      } else {
+        btnToggle.textContent = 'Abrir carta';
+        clearInterval(typingTimer);
+        letterEl.textContent = '';
+      }
+      opened = !opened;
+    });
+
+    btnCopy.addEventListener('click', ()=>{
+      hiddenCopy.value = carta;
+      hiddenCopy.select();
+      try {
+        document.execCommand('copy');
+        btnCopy.textContent = 'Copiado!';
+        setTimeout(()=>btnCopy.textContent = 'Copiar texto',1200);
+      } catch (e) {
+        btnCopy.textContent = 'Erro ao copiar';
+        setTimeout(()=>btnCopy.textContent = 'Copiar texto',1200);
+      }
+    });
+
+    btnPrint.addEventListener('click', ()=>{
+      if(!opened){
+        typeText(carta, 0);
+        opened = true;
+        btnToggle.textContent = 'Fechar carta';
+        bgMusic.muted = false;
+        bgMusic.play();
+      }
+      setTimeout(()=>window.print(),250);
+    });
+  </script>
+</body>
+</html>

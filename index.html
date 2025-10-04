@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Para a Lavyla — Só nós</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent: #ff6b9a;
+      --glass: rgba(255,255,255,0.12);
+      --glass-strong: rgba(255,255,255,0.18);
+      --maxw: 920px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,-apple-system,"Helvetica Neue",Arial}
+    body{
+      background-image: url('https://s11.aconvert.com/convert/p3r68-cdx67/0q5ya-k0zju.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      display:flex;align-items:center;justify-content:center;
+      padding:36px;
+      color:#fff;
+    }
+    /* soft dark overlay to keep text readable */
+    .overlay{
+      position:fixed;inset:0;background:linear-gradient(180deg,rgba(10,10,12,0.45),rgba(5,5,10,0.6));backdrop-filter: blur(2px);
+    }
+    .card{
+      position:relative;max-width:var(--maxw);width:100%;z-index:2;padding:36px;border-radius:20px;
+      background: linear-gradient(135deg,var(--glass),var(--glass-strong));box-shadow:0 8px 30px rgba(2,6,23,0.6);
+      display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:center;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+    @media (max-width:880px){
+      .card{grid-template-columns:1fr; padding:28px}
+    }
+    .left{padding-right:6px}
+    h1{font-family:'Playfair Display',serif;font-size:34px;margin:0 0 10px;letter-spacing:0.4px}
+    .subtitle{font-size:14px;opacity:0.9;margin-bottom:18px}
+    p.letra{font-size:16px;line-height:1.6;margin:0 0 20px;color:rgba(255,255,255,0.95)}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      background:transparent;border:1px solid rgba(255,255,255,0.14);padding:10px 16px;border-radius:12px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;font-weight:600;
+      transition:transform .14s ease,box-shadow .18s ease,background .18s ease;
+      backdrop-filter: blur(6px);
+    }
+    .btn:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
+    .btn.primary{background:linear-gradient(90deg, rgba(255,107,154,0.16), rgba(255,157,173,0.08));border:1px solid rgba(255,107,154,0.22)}
+    .right{display:flex;align-items:center;justify-content:center}
+    .portrait{
+      width:100%;max-width:300px;height:300px;border-radius:18px;overflow:hidden;box-shadow:0 18px 40px rgba(4,6,12,0.6);border:1px solid rgba(255,255,255,0.06);position:relative;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.03));
+    }
+    .portrait img{width:100%;height:100%;object-fit:cover;display:block}
+    .heart{position:absolute;top:14px;right:14px;background:rgba(255,255,255,0.06);padding:8px;border-radius:999px;border:1px solid rgba(255,255,255,0.04)}
+    .tiny{font-size:12px;opacity:0.9}
+
+    /* subtle floating animation */
+    .card{animation:float 8s ease-in-out infinite}
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+
+    footer{margin-top:18px;font-size:12px;opacity:0.85}
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="card" role="main">
+    <div class="left">
+      <h1>Para Lavyla — meu lugar preferido</h1>
+      <div class="subtitle">Tem coisas que não se explica direito — se vive ao lado da pessoa certa.</div>
+      <p class="letra">Lavyla, quando penso em futuro, não imagino um trajeto perfeito: imagino nós dois tirando fotos, ficando abraçados, rindo de tudo, e ficando o dia todo do seu lado — é só um desejo sincero: quero aprender contigo, crescer contigo e escolher ficar do teu lado todos os dias, mesmo quando for difícil. Quero ser o lugar onde você acha descanso e coragem ao mesmo tempo.</p>
+      <p class="letra">Se eu puder te pedir uma coisa simples: me deixa provar todos os jeitos de te fazer sorrir. E, se você aceitar, eu fico pra sempre ao teu lado.</p>
+
+      <div class="buttons">
+        <a class="btn primary" href="https://youtu.be/EWka4EmGSy0?si=PQ2AnWFNNdNrMCTU" target="_blank" rel="noopener noreferrer">
+          <!-- music icon -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 17a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path><path d="M9 14V5l10-2v9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          MÚSICA
+        </a>
+
+        <a class="btn" href="https://www.instagram.com/lavymendezz?igsh=enpmeml4b3Q5NWc=" target="_blank" rel="noopener noreferrer">
+          <!-- insta icon -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.3"/><path d="M16 11.37a4 4 0 1 1-7.998.63A4 4 0 0 1 16 11.37z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 6.5h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          SEU INSTAGRAM
+        </a>
+      </div>
+
+      <footer class="tiny">Feito com carinho — POR LC</footer>
+    </div>
+    <div class="right">
+      <div class="portrait" aria-hidden="true">
+        <div class="heart">❤</div>
+        <img src="https://s11.aconvert.com/convert/p3r68-cdx67/0q5ya-k0zju.jpg" alt="Lavyla" onerror="this.style.filter='grayscale(20%)'"/>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // small tidy: let the first button play the music in a new tab if popup blocked
+    // no heavy scripts — site foi pensado para ser simples e bonito
+  </script>
+</body>
+</html>
